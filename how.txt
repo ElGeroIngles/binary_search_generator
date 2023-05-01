@@ -1,3 +1,0 @@
--Una carpeta que tendra todos los comandos para buscar en que frame estamos
--Una carpeta donde estaran las funciones de cada frame
--Un salider para decir si quieres que se ejecute una funcion o un comando
