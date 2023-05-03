@@ -109,7 +109,7 @@ def language(event):
     global cd_button
     global generate_button
     if language_combobox.get() == "Español":
-        btg_label.config(text="Generador de árboles binarios")
+        btg_label.config(text="Generador de Búsquedas Binarias")
         loct_label.config(text="Selecciona un directorio:")
         values_label.config(text="Valores:")
         to_label.config(text="hasta")
@@ -122,7 +122,7 @@ def language(event):
         # ToolTip(cd_button, msg="Selecciona el directorio donde se generará.", delay=0.4, parent_kwargs={"bg": "black", "padx": 5, "pady": 5}, fg="#ffffff", bg="#1c1c1c", padx=10, pady=10)
         # ToolTip(generate_button, msg="Genera el árbol.", delay=0.4, parent_kwargs={"bg": "black", "padx": 5, "pady": 5}, fg="#ffffff", bg="#1c1c1c", padx=10, pady=10)
     else:
-        btg_label.config(text="Binary Tree Generator")
+        btg_label.config(text="Binary Search Generator")
         loct_label.config(text="Select a directory:")
         values_label.config(text="Values:")
         to_label.config(text="to")
@@ -145,7 +145,7 @@ style.configure("Entry.TEntry", foreground="white", background="white")
 style.configure("Combobox.TCombobox", foreground="black", background="white")
 
 # Widgets:
-btg_label = tk.Label(root, text="Binary Tree Generator", font=("Arial", 30), bg=bg_color, foreground="black")
+btg_label = tk.Label(root, text="Binary Search Generator", font=("Arial", 30), bg=bg_color, foreground="black")
 loct_label = tk.Label(root, text="Select a directory:", font=("Arial", 20), bg=bg_color, foreground="black")
 cd_entry = ttk.Entry(root, font=("Arial", 12), width=30, style="Entry.TEntry", cursor="xterm")
 cd_button = ttk.Button(root, text="Select", command=cd, style="Button.TButton", cursor="hand2")
