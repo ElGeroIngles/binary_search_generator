@@ -63,9 +63,9 @@ def setup(dir_path, func_or_cmd, language_):
     generate(int(value1_spinbox.get()), int(value2_spinbox.get()), cd_entry.get(), func_path_entry.get(), namespace_entry.get(), te_entry.get(), scoreboard_entry.get(), func_cmd_entry.get(), func_or_cmd)
 
     if language_ == "English":
-        messagebox.showinfo(title="Done", message="Binary tree generated successfully.")
+        messagebox.showinfo(title="Done", message="Binary Search generated successfully.")
     else:
-        messagebox.showinfo(title="Hecho", message="El árbol binario se generó satisfactoriamente.")
+        messagebox.showinfo(title="Hecho", message="La Búsqueda Binaria se generó satisfactoriamente.")
 
 def generate(min, max, dir_path, func_path, nmspc, te, score, code, func_or_cmd):
     mid = math.floor((min + max) / 2)
