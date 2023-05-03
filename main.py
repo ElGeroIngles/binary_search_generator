@@ -19,7 +19,7 @@ language_ = "English"
 
 root = Tk()
 
-root.title("Binary tree generator")
+root.title("Binary search generator")
 root.iconphoto(False, tk.PhotoImage(file="img/icon.png"))
 root.geometry('1300x950')
 root.resizable(False, False)
