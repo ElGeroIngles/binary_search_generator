@@ -6,28 +6,24 @@ except:
 
 import tkinter as tk
 import tkinter.ttk as ttk
-from tktooltip import ToolTip
 from tkinter import *
 from tkinter import messagebox
 from tkinter import filedialog
-from tkinter.tix import *
 import math
 import os
 
 bg_color = '#333333'
 button_color = '#1D1D1D'
 output_form = "Function:"
-language_ = ""
+language_ = "English"
 
 root = Tk()
 
 root.title("Binary tree generator")
-root.iconphoto(False, tk.PhotoImage(file="./img/icon.png"))
+root.iconphoto(False, tk.PhotoImage(file="img/icon.png"))
 root.geometry('1300x950')
 root.resizable(False, False)
 root.configure(bg=bg_color)
-
-tip = Balloon(root)
 
 output_value = IntVar()
 
@@ -64,20 +60,20 @@ def setup(dir_path, func_or_cmd, language_):
             else:
                 messagebox.showerror(title="Error", message="El directorio ya existe.")
                 return
-    generate(int(value1_spinbox.get()), int(value2_spinbox.get()), cd_entry.get(), func_path_entry.get(), namespace_entry.get(), te_entry.get(), scoreboard_entry.get(), func_cmd_entry.get(), func_or_cmd, language_)
+    generate(int(value1_spinbox.get()), int(value2_spinbox.get()), cd_entry.get(), func_path_entry.get(), namespace_entry.get(), te_entry.get(), scoreboard_entry.get(), func_cmd_entry.get(), func_or_cmd)
 
     if language_ == "English":
         messagebox.showinfo(title="Done", message="Binary tree generated successfully.")
     else:
         messagebox.showinfo(title="Hecho", message="El árbol binario se generó satisfactoriamente.")
 
-def generate(min, max, dir_path, func_path, nmspc, te, score, code, func_or_cmd, language_):
+def generate(min, max, dir_path, func_path, nmspc, te, score, code, func_or_cmd):
     mid = math.floor((min + max) / 2)
     output = ""
     filename = f"{dir_path}/search/{str(min)}_{str(max)}.mcfunction"
     if min != mid:
         output = f"execute if score {te} {score} matches {str(min)}..{str(mid)} run function {nmspc}:{func_path}/search/{str(min)}_{str(mid)}"
-        generate(min ,mid, dir_path, func_path, nmspc, te, score, code, func_or_cmd)
+        generate(min, mid, dir_path, func_path, nmspc, te, score, code, func_or_cmd)
     else:
         if func_or_cmd == 0:
             output = f"execute if score {te} {score} matches {str(min)} run function {nmspc}:{func_path}/output/{str(min)}"
@@ -97,9 +93,9 @@ def generate(min, max, dir_path, func_path, nmspc, te, score, code, func_or_cmd,
             o.close()
         else:
             output = f"execute if score {te} {score} matches {str(max)} run {code}"
-        f = open(filename, "w")
-        f.write(output)
-        f.close()
+    f = open(filename, "w")
+    f.write(output)
+    f.close()
 
 def language(event):
     global btg_label
@@ -123,8 +119,8 @@ def language(event):
         func_label.config(text="Función")
         cd_button.config(text="Selecciona")
         generate_button.config(text="Generar")
-        ToolTip(cd_button, msg="Selecciona el directorio donde se generará.", delay=0.4, parent_kwargs={"bg": "black", "padx": 5, "pady": 5}, fg="#ffffff", bg="#1c1c1c", padx=10, pady=10)
-        ToolTip(generate_button, msg="Genera el árbol.", delay=0.4, parent_kwargs={"bg": "black", "padx": 5, "pady": 5}, fg="#ffffff", bg="#1c1c1c", padx=10, pady=10)
+        # ToolTip(cd_button, msg="Selecciona el directorio donde se generará.", delay=0.4, parent_kwargs={"bg": "black", "padx": 5, "pady": 5}, fg="#ffffff", bg="#1c1c1c", padx=10, pady=10)
+        # ToolTip(generate_button, msg="Genera el árbol.", delay=0.4, parent_kwargs={"bg": "black", "padx": 5, "pady": 5}, fg="#ffffff", bg="#1c1c1c", padx=10, pady=10)
     else:
         btg_label.config(text="Binary Tree Generator")
         loct_label.config(text="Select a directory:")
@@ -136,8 +132,8 @@ def language(event):
         func_label.config(text="Function")
         cd_button.config(text="Select")
         generate_button.config(text="Generate")
-        ToolTip(cd_button, msg="Select the directory where it will generate.", delay=0.4, parent_kwargs={"bg": "black", "padx": 5, "pady": 5}, fg="#ffffff", bg="#1c1c1c", padx=10, pady=10)
-        ToolTip(generate_button, msg="Generate the tree.", delay=0.4, parent_kwargs={"bg": "black", "padx": 5, "pady": 5}, fg="#ffffff", bg="#1c1c1c", padx=10, pady=10)
+        # ToolTip(cd_button, msg="Select the directory where it will generate.", delay=0.4, parent_kwargs={"bg": "black", "padx": 5, "pady": 5}, fg="#ffffff", bg="#1c1c1c", padx=10, pady=10)
+        # ToolTip(generate_button, msg="Generate the tree.", delay=0.4, parent_kwargs={"bg": "black", "padx": 5, "pady": 5}, fg="#ffffff", bg="#1c1c1c", padx=10, pady=10)
     change_out()
 
 root.tk.call("source", "Azure/azure.tcl")
@@ -196,12 +192,12 @@ te_entry.grid(column=1, row=3, sticky="nw", pady=5)
 func_label.grid(column=1, row=5, sticky="nw", padx=30)
 cmd_or_func_switch.grid(column=1, row=5, sticky="nw", padx=190)
 cmd_label.grid(column=1, row=5, sticky="n", padx=90)
-output_label.grid(column=1, row=6, sticky="nw", padx=30, rowspan=2, pady=30)
-func_cmd_entry.grid(column=1, row=7, sticky="wn", padx=30, rowspan=2, pady=80)
+output_label.grid(column=1, row=6, sticky="nw", rowspan=2, pady=30)
+func_cmd_entry.grid(column=1, row=7, sticky="wn", rowspan=2, pady=80)
 generate_button.grid(column=1, row=9, sticky="wns", padx=200, pady=10)
 
 # Hover info:
-ToolTip(cd_button, msg="Select the directory where it will generate.", delay=0.4, parent_kwargs={"bg": "black", "padx": 5, "pady": 5}, fg="#ffffff", bg="#1c1c1c", padx=10, pady=10)
-ToolTip(generate_button, msg="Generate the tree.", delay=0.4, parent_kwargs={"bg": "black", "padx": 5, "pady": 5}, fg="#ffffff", bg="#1c1c1c", padx=10, pady=10)
+# ToolTip(cd_button, msg="Select the directory where it will generate.", delay=0.4, parent_kwargs={"bg": "black", "padx": 5, "pady": 5}, fg="#ffffff", bg="#1c1c1c", padx=10, pady=10)
+# ToolTip(generate_button, msg="Generate the tree.", delay=0.4, parent_kwargs={"bg": "black", "padx": 5, "pady": 5}, fg="#ffffff", bg="#1c1c1c", padx=10, pady=10)
 
 root.mainloop()
