@@ -1,4 +1,4 @@
-GENERADOR DE BÚSQUEDAS BINARIOS
+GENERADOR DE BÚSQUEDAS BINARIAS
 
 Este simple programa ayuda de una forma muy sencilla a hacer un árbol binario para datapacks de minecraft, tengo un vídeo subido en el que explico a cómo usarlo correctamente ya que es algo confuso usarlo por primera vez y cómo funciona en mi canal (https://www.youtube.com/@elgeroingles).
 
